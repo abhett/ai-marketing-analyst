@@ -24,19 +24,6 @@ Aplikasi akan otomatis:
 - Antarmuka chat interaktif berbasis bahasa natural
 - UI minimalis abu-abu modern
 
-
-🧱 Struktur Project
-
-ai-marketing-analyst/
-├─ streamlit_app.py        # Entry point utama Streamlit
-├─ ui.py                   # Custom CSS & komponen tampilan (header, chat history)
-├─ data_utils.py           # Fungsi load_dataset & detect_columns
-├─ llm_utils.py            # Inisialisasi LLM & fungsi decide_actions_with_llm
-├─ charts.py               # Fungsi chart: Top-N & time series bulanan
-├─ requirements.txt        # Dependency Python
-└─ README.txt
-
-
 🚀 Menjalankan Secara Lokal
 
 1. Prasyarat:
@@ -44,8 +31,8 @@ ai-marketing-analyst/
    - Pip
 
 2. Clone Repository:
-   git clone https://github.com/USERNAME/ai-marketing-analyst-streamlit.git
-   cd ai-marketing-analyst-streamlit
+   git clone https://github.com/abhett/ai-marketing-analyst
+   cd ai-marketing-analyst
 
 3. Install Dependencies:
    pip install -r requirements.txt
