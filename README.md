@@ -1,63 +1,182 @@
-## Getting Started
+AI Marketing & E-Commerce Analyst
 
-### Prerequisites
+Aplikasi Streamlit berbasis AI untuk menganalisis data penjualan, transaksi, atau e-commerce secara interaktif dengan bahasa natural.
+Cukup:
 
-Ensure you have Python installed. It is recommended to use `miniconda` or `conda` for environment management.
+Masukkan Google AI API Key
 
-### Installation
+Upload file CSV/Excel
 
-1.  **Install Miniconda (if not already installed)**
+Ajukan pertanyaan seperti:
 
-    Download and install Miniconda from the official website: <mcurl name="Miniconda Installer" url="https://docs.conda.io/en/latest/miniconda.html"></mcurl>
+"Tampilkan top 10 produk berdasarkan revenue dan tren penjualan bulanan."
 
-2.  **Create a Conda Environment**
+Aplikasi akan otomatis:
 
-    Open your terminal or Anaconda Prompt and create a new environment:
+Mendeteksi kolom penting
 
-    ```bash
-    conda create -n chatbot-env python=3.11
-    conda activate chatbot-env
-    ```
+Menggunakan LLM (Gemini via LangChain) untuk memahami intent
 
-3.  **Install Requirements**
+Menampilkan grafik & insight tanpa perlu coding manual
 
-    Navigate to the project directory and install the necessary packages:
+✨ Fitur Utama
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+🔐 Input Google AI API Key langsung dari sidebar (tidak disimpan di server)
 
-4.  **Run the Streamlit Application**
+📂 Upload CSV / XLSX / XLS
 
-    ```bash
-    streamlit run streamlit_app_basic.py
+🤖 Analisis AI berbasis LangChain + Google Gemini
 
-    The application will open in your web browser.
+🔍 Deteksi otomatis:
 
-### Running with Docker (Optional)
+Kolom tanggal
 
-1.  **Build the Docker Image**
+Kolom revenue/total
 
-    Navigate to the project directory and build the Docker image:
+Kolom quantity
 
-    ```bash
-    docker build -t chatbot-streamlit-demo .
-    ```
+Kolom kategori/produk/brand/channel
 
-2.  **Run the Docker Container**
+🏆 Visualisasi:
 
-    Run the Docker container, mapping port 8501:
+Top-N kategori/produk berdasarkan metrik tertentu
 
-    ```bash
-    docker run -p 8501:8501 chatbot-streamlit-demo
-    ```
+Tren penjualan bulanan (timeseries)
 
-    The application will be accessible in your web browser at `http://localhost:8501`.
+💬 Antarmuka chat:
 
-## Code Structure
+Tanyakan dengan bahasa natural
 
-- streamlit_app.py: The main Streamlit application file, containing the chatbot UI and logic.
-- database_tools.py: Contains functions for interacting with the sales_data.db database.
-- requirements.txt: Lists all Python dependencies required for the project.
-- streamlit_react_app.py: (Optional) Another Streamlit application, possibly demonstrating React integration.
-- streamlit_react_tools_app.py: (Optional) Another Streamlit application, possibly demonstrating React tools integration.
+Response berupa grafik + ringkasan insight
+
+🎨 UI minimalis abu-abu modern (custom CSS)
+
+🧱 Arsitektur & Struktur Project
+ai-marketing-analyst/
+├─ streamlit_app.py        # Entry point utama Streamlit
+├─ ui.py                   # Custom CSS & komponen tampilan (header, chat history)
+├─ data_utils.py           # Fungsi load_dataset & detect_columns
+├─ llm_utils.py            # Inisialisasi LLM & fungsi decide_actions_with_llm
+├─ charts.py               # Fungsi chart: Top-N & time series bulanan
+├─ requirements.txt        # Dependency Python
+└─ README.md
+
+
+Semua logika asli dipertahankan, hanya dipisah menjadi modul agar:
+
+Lebih rapi
+
+Mudah di-maintain
+
+Siap untuk deployment production/demo
+
+🚀 Menjalankan Secara Lokal
+1. Prasyarat
+
+Python 3.9–3.11
+
+Pip
+
+2. Clone Repository
+git clone https://github.com/USERNAME/ai-marketing-analyst-streamlit.git
+cd ai-marketing-analyst-streamlit
+
+3. Install Dependencies
+pip install -r requirements.txt
+
+
+Jika menggunakan file Excel:
+
+pip install openpyxl
+
+4. Jalankan Aplikasi
+streamlit run streamlit_app.py
+
+
+Lalu buka URL yang muncul (biasanya http://localhost:8501).
+
+🔑 Konfigurasi Google AI API Key
+
+Aplikasi menggunakan ChatGoogleGenerativeAI (LangChain) dengan model:
+
+gemini-2.0-flash-exp
+
+Langkah:
+
+Buka Google AI Studio
+
+Buat / salin API Key
+
+Di aplikasi Streamlit:
+
+Buka sidebar
+
+Tempel API key di field "Masukkan Google AI API Key"
+
+API key:
+
+Hanya digunakan di sisi aplikasi untuk sesi Anda
+
+Tidak disimpan di repo
+
+Tidak dikodekan hard-coded
+
+🌐 Deploy ke Streamlit Community Cloud
+
+Push project ini ke GitHub (public).
+
+Buka Streamlit Community Cloud.
+
+Klik "New app".
+
+Pilih:
+
+Repository: repo yang berisi project ini
+
+Branch: main
+
+File: streamlit_app.py
+
+Deploy.
+
+Pengguna akhir:
+
+Mengakses URL Streamlit
+
+Mengisi API key mereka
+
+Upload dataset mereka
+
+Mulai tanya jawab & melihat grafik analisis
+
+💡 Contoh Pertanyaan yang Didukung
+
+Tampilkan top 10 produk berdasarkan revenue
+
+Buat tren penjualan bulanan dari data ini
+
+Top 5 brand berdasarkan omzet
+
+Bandingkan performa channel berdasarkan total transaksi
+
+Ringkas insight utama dari data ini
+
+Aplikasi akan mengubah pertanyaan menjadi aksi terstruktur:
+
+top_n
+
+timeseries
+
+summary
+
+Lalu menjalankan visualisasi sesuai struktur tersebut.
+
+🔐 Privasi & Keamanan
+
+Data yang diupload hanya diproses di sesi aplikasi.
+
+API key dimasukkan oleh user sendiri via sidebar.
+
+Tidak ada API key disimpan di dalam repo GitHub.
+
+Cocok untuk demo, PoC, atau analisis internal.
